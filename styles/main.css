@@ -1,0 +1,241 @@
+body {
+    background:rgba(194, 182, 145, 0.671);
+    color: white;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+footer {
+    background: black;
+    padding: 10px 20px;
+}
+
+.wrapper {
+    margin: 10px 150px;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+    background: gray;
+    padding: 5px 10px;
+    height: auto;
+    border-radius: 5px;
+}
+
+nav li:hover{
+    background: rgb(65, 64, 64);
+}
+
+nav ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    background-image: url("../images/forest.jpg");
+    height: auto;
+    padding: 20px 40px;
+}
+
+header h1 {
+    text-align: center;
+}
+
+header h1 span{
+    background-color: black;
+    color: rgb(29, 98, 138);
+    margin: 5px;
+    padding: 7px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+header img {
+    max-height: 150px;
+    max-width: 300px;
+    border-radius: 200px;
+}
+div.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    margin: 10px;
+    padding: 5px;
+    max-height: 500px;
+}
+
+.feature-box {
+    margin: 5px;
+}
+
+/* Checklist Styling */
+
+.feature-box.checklist {
+    background: rgb(24, 24, 24);
+    color: gray;
+    flex-direction: column;
+    border-style: solid;
+    border-color:rgb(65, 63, 63);
+    max-height: 400px;    
+}
+
+.feature-box.checklist h3 {
+    margin: 0;
+    padding: 20px 0px 0px 0px;
+    text-align: center;
+    color: white;
+}
+
+.feature-box.checklist #unordered-checklist {
+    margin: 0px;
+    padding: 0px;
+    height: 340px;
+    list-style-type: none;   
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.feature-box.checklist li {
+    display: flex;
+    margin-right: 20px;
+    background:rgb(65, 63, 63);
+    padding: 0px 10px;
+    margin: 5px 0px 0px 0px;
+    height: auto;
+    width: 200px;
+}
+
+.checkbox {
+    margin: 5px 5px 0px 0px;
+    position: relative;
+    cursor: pointer;
+}
+
+.inline {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.feature-box.checklist .unordered-checklist-goal-content {
+    border-style: solid;
+    border-width: 0px 0px 0px 2px;
+    height: auto;
+    width: 190px;
+}
+
+.feature-box.checklist .unordered-checklist-goal-info {
+    display: flex;
+}
+
+.feature-box.checklist li .unordered-checklist-title {
+    font-weight: bold;
+    padding: 6px;
+    padding-top: 9px;
+    margin: 0px;
+}
+
+.feature-box.checklist li .unordered-checklist-description {
+    padding: 6px;
+    padding-top: 9px;
+    font-size: 10px;
+    margin: 0px;
+    width: 100px;
+}
+
+.feature-box.checklist li .unordered-checklist-deadline {
+    padding: 6px;
+    padding-top: 9px;
+    text-align: right;
+    font-size: 10px;
+    margin: 0px;
+    width: 100px;
+}
+
+/* BUTTON STYLING */
+
+.button-container button{
+    background-color:rgb(1, 91, 151);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 8px;
+    width: 98%;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.button-container button span {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button-container button span:after {
+    content: '\00bb';
+    font-size: 25px;
+    position: absolute;
+    opacity: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button-container button:hover span:after{
+    opacity: 1;
+    right: 0;
+    cursor: pointer;
+
+}
+
+.button-container button:hover span {
+    padding-right: 25px;
+    cursor: pointer;
+}
+
+
+/* Calendar Styling */
+
+.feature-box.calendar {
+    color: gray;
+    max-width: 600px;
+    padding-top: 0px;
+}
+
+.feature-box.calendar img {
+    max-width: 600px;
+}
+
+/* Input Form styles */
+
+#input-form {
+    background-color: white;
+    color: black;
+    border: solid;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    opacity: 0;
+    transition: 0.5s;
+    padding: 5px 0px;
+}
+
+.field-input {
+    margin: 5px;
+    padding: 5px;
+    font-weight: bold;
+}

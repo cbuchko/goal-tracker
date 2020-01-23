@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="js/script.js"></script>
+        <title>Connor's Project</title>
+        <link href="styles/main.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body onload="updateChecklist()">    
+        <header>
+            <nav>
+                <ul>
+                    <li><a>Home</a></li>
+                    <li><a href= "pages/Page2.html">Manage Goals</a></li>
+                    <li><a href= "pages/Page3.html">page 3</a></li>
+                </ul>
+            </nav>
+            <h1><span><strong>Goal Setter</strong></span></h1>
+            <img src="images/shia.jpg" alt="justdoit"></img>
+        </header>
+        <div class="main-container">
+            <div class="button-container">
+                <section class="feature-box checklist">
+                    <h3>Todays Goals:</h3>
+                    <ul id = "unordered-checklist">
+                        <li><input type="checkbox" class=checkbox name="goal"></input>
+                            <div class="unordered-checklist-goal-content">
+                                <p class="unordered-checklist-title"> Goal 1</p>
+                                <div class="unordered-checklist-goal-info">
+                                    <span class="unordered-checklist-description"> Description of goal</span>
+                                    <span class="unordered-checklist-deadline">2020-01-04</span> 
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            <button onClick="openForm()"><span>Add a goal!</span></button>
+            </div>
+            <section class="feature-box calendar">
+                <img src="images/calendar.jpg" alt="calendar"></img>
+            </section>
+        </div>
+        <div class="wrapper">
+            <section id="input-form">
+                    <div class="field-input"> Goal Name: <input type="text" id=goal-name name="goal-name" autocomplete="off"></input></div>
+                    <div class="field-input">Goal Description: <input type="text" id="goal-description" name="goal-description" autocomplete="off"></input></div>
+                    <div class="field-input">Goal Deadline: <input type="date" id="goal-deadline" name="goal-deadline"></input></div>
+                    <div class="field-input">Repeating: 
+                        <select>
+                            <option value="daily">Daily</option>
+                            <option value="bi-daily">Bi-Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="bi-weekly">Bi-Weekly</option>
+                        </select>
+                    </div>
+                    <div class="field-input"><button type="button" onClick="makeGoalItem()">Submit</button></input></div>
+            </section>
+        </div>
+        <footer>
+            footer
+        </footer>      
+    </body>
+</html>

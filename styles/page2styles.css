@@ -1,0 +1,85 @@
+#goal-manager-container{
+    background-color: #000000;
+    width:800px;
+}
+
+.goal-manager-headings{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr 1fr;
+    justify-content: left;
+}
+
+/* Styling for the accordion drop downs */
+
+.accordion{
+    padding: 0px;
+    border: none;
+    transition: 0.4s;
+    width: 100%;
+    cursor: pointer;
+    background-color: gray;   
+}
+
+.accordion-header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.8fr 1fr;
+    padding: 10px;
+    margin: 0px;
+}
+
+.active, .accordion:hover{
+    background-color: rgb(116, 116, 116)
+}
+
+/* Styling for the list items */
+
+#goal-manager-container ul{
+    padding: 0px;
+    list-style-type: none;
+}
+
+#goal-manager-widgets {
+    display: flex;
+}
+
+#goal-manager-unordered-list img {
+    border-image-outset:50px;
+    padding: 5px;
+    height: 25px;
+}
+
+#goal-manager-unordered-list img:hover {
+    background-color:rgb(75, 75, 75);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input:disabled {
+    background-color: transparent;
+    margin-right: 11px;
+    border: none;
+    color: white;
+    font-size: 17px;
+    width: auto;
+    cursor: pointer;
+}
+
+input {
+    background-color: white;
+    margin-right: 11px;
+    color: black;
+    font-size: 17px;
+    width: auto;
+} 
+
+/* Styling for the hidden panels */
+
+.dropdown-panel {
+    padding: 0 18px;
+    background-color: white;
+    color: black;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+}
