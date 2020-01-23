@@ -1,9 +1,9 @@
-#goal-manager-container{
+#goal-manager-container {
     background-color: #000000;
-    width:800px;
+    width: 800px;
 }
 
-.goal-manager-headings{
+.goal-manager-headings {
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 0.5fr 1fr;
@@ -12,29 +12,29 @@
 
 /* Styling for the accordion drop downs */
 
-.accordion{
+.accordion {
     padding: 0px;
     border: none;
     transition: 0.4s;
     width: 100%;
     cursor: pointer;
-    background-color: gray;   
+    background-color: gray;
 }
 
-.accordion-header{
+.accordion-header {
     display: grid;
     grid-template-columns: 1fr 1fr 0.8fr 1fr;
     padding: 10px;
     margin: 0px;
 }
 
-.active, .accordion:hover{
+.accordion:hover {
     background-color: rgb(116, 116, 116)
 }
 
 /* Styling for the list items */
 
-#goal-manager-container ul{
+#goal-manager-container ul {
     padding: 0px;
     list-style-type: none;
 }
@@ -44,13 +44,13 @@
 }
 
 #goal-manager-unordered-list img {
-    border-image-outset:50px;
+    border-image-outset: 50px;
     padding: 5px;
     height: 25px;
 }
 
 #goal-manager-unordered-list img:hover {
-    background-color:rgb(75, 75, 75);
+    background-color: rgb(75, 75, 75);
     border-radius: 50%;
     cursor: pointer;
 }
@@ -71,7 +71,7 @@ input {
     color: black;
     font-size: 17px;
     width: auto;
-} 
+}
 
 /* Styling for the hidden panels */
 

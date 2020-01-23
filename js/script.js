@@ -1,6 +1,5 @@
-
 class GoalItem {
-    constructor(goal_name, goal_description, goal_deadline){
+    constructor(goal_name, goal_description, goal_deadline) {
         this.name = goal_name
         this.description = goal_description;
         this.deadline = goal_deadline;
@@ -45,9 +44,9 @@ function newCheckListItem(newGoal) {
     goal_info.appendChild(deadline);
     goal_content.appendChild(goal_info)
     li.appendChild(goal_content);
-    
 
-    document.getElementById("unordered-checklist").appendChild(li); 
+
+    document.getElementById("unordered-checklist").appendChild(li);
     document.getElementById("input-form").style.opacity = 0;
 
     document.getElementById("goal-name").value = "";
@@ -59,7 +58,7 @@ function newCheckListItem(newGoal) {
  * Should only be called by other functions.
  * Takes the goal list and generates the goal manager.
  */
-function buildGoalManager(newGoal){
+function buildGoalManager(newGoal) {
 
     var newListItem = document.createElement("li");
     newListItem.id = "goal-manager-" + newGoal.name.replace(/\s/g, '-');
@@ -73,10 +72,10 @@ function buildGoalManager(newGoal){
     accordionDiv.className = "accordion-header";
 
     var nameSpace = document.createElement("div");
-    nameSpace.className ="goal-manager-name";
-    
+    nameSpace.className = "goal-manager-name";
+
     var nameInput = document.createElement("input");
-    nameInput.value= newGoal.name;
+    nameInput.value = newGoal.name;
     nameInput.disabled = true;
 
     nameSpace.appendChild(nameInput);
@@ -86,17 +85,17 @@ function buildGoalManager(newGoal){
     descriptionSpace.className = "goal-manager-description";
 
     var descriptionInput = document.createElement("input");
-    descriptionInput.value= newGoal.description;
+    descriptionInput.value = newGoal.description;
     descriptionInput.disabled = true;
 
     descriptionSpace.appendChild(descriptionInput);
     accordionDiv.appendChild(descriptionSpace);
 
     var deadlineSpace = document.createElement("div");
-    deadlineSpace.className= "goal-manager-deadline";
+    deadlineSpace.className = "goal-manager-deadline";
 
     var deadlineInput = document.createElement("input");
-    deadlineInput.value= newGoal.deadline;
+    deadlineInput.value = newGoal.deadline;
     deadlineInput.type = "date";
     deadlineInput.disabled = true;
 
@@ -128,7 +127,7 @@ function buildGoalManager(newGoal){
 
     var dropdownPanel = document.createElement("div");
     dropdownPanel.className = "dropdown-panel";
-    
+
     var content = document.createTextNode("hello");
 
     var p = document.createElement("p");
@@ -138,7 +137,7 @@ function buildGoalManager(newGoal){
     block.appendChild(dropdownPanel);
 
     newListItem.appendChild(block);
-    
+
     document.getElementById("goal-manager-unordered-list").appendChild(newListItem);
 }
 
@@ -146,8 +145,8 @@ function buildGoalManager(newGoal){
  * Makes a new goal item from submitted inputs.
  * Creates styling for the item in the checklist.
  */
-function makeGoalItem(){
-    if(document.getElementById("goal-name").value === ""){
+function makeGoalItem() {
+    if (document.getElementById("goal-name").value === "") {
         alert("Name needed!");
         return;
     }
@@ -155,10 +154,10 @@ function makeGoalItem(){
     var nameInput = document.getElementById("goal-name").value;
     var descriptionInput = document.getElementById("goal-description").value;
     var deadlineInput = document.getElementById("goal-deadline").value;
-    
+
     newGoal = new GoalItem(nameInput, descriptionInput, deadlineInput);
 
-    if(goal_list != null){
+    if (goal_list != null) {
         goal_list.push(newGoal);
     } else {
         var goal_list = [newGoal];
@@ -174,21 +173,21 @@ function makeGoalItem(){
  * When the home page is loaded, make sure the checklist
  * contains all of the right goals
  */
-function updateChecklist(){
+function updateChecklist() {
     //get goals from local storage
     var goal_list = JSON.parse(window.localStorage.getItem('master_list'));
-    if(goal_list != null){
+    if (goal_list != null) {
         goal_list.forEach(newCheckListItem);
     }
 }
 
-function openForm(){
+function openForm() {
     document.getElementById("input-form").style.opacity = 100;
 }
 
-function loadGoalManager(){
+function loadGoalManager() {
     var goal_list = JSON.parse(window.localStorage.getItem('master_list'));
-    if(goal_list != null){
+    if (goal_list != null) {
         goal_list.forEach(buildGoalManager);
     }
 
@@ -196,17 +195,17 @@ function loadGoalManager(){
     var i;
 
     for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
+        acc[i].addEventListener("click", function () {
             this.classList.toggle("active");
             var panel = this.nextElementSibling;
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px";
-            }         
+            }
         });
-        
-        if(i%2 === 1){
+
+        if (i % 2 === 1) {
             acc[i].style.backgroundColor = "rgb(90,90,90)";
         }
     }
@@ -216,7 +215,7 @@ function loadGoalManager(){
  * Enable the input fields for the specific
  * goal so that they are editable.
  */
-function enableGoalEdit(goalName){
+function enableGoalEdit(goalName) {
 
     var goalLookup = goalName.replace(/\s/g, '-');
     var listItemBase = "#goal-manager-" + goalLookup;
@@ -227,7 +226,7 @@ function enableGoalEdit(goalName){
     document.querySelector(listItemBase + " .goal-manager-deadline input").disabled = false;
 
     editWidget.src = "../images/checkmark.png";
-    editWidget.setAttribute("onclick","disableGoalEdit(\"" + goalName + "\")");
+    editWidget.setAttribute("onclick", "disableGoalEdit(\"" + goalName + "\")");
 }
 
 /**
@@ -240,7 +239,7 @@ function enableGoalEdit(goalName){
  * doesn't reorder it to the bottom. This 
  * doesn't matter if sorting is implemented.
  */
-function disableGoalEdit(goalName){
+function disableGoalEdit(goalName) {
     var goalLookup = goalName.replace(/\s/g, '-');
     var listItemBase = "#goal-manager-" + goalLookup;
     var editWidget = document.querySelector(listItemBase + " .edit-widget");
@@ -252,8 +251,8 @@ function disableGoalEdit(goalName){
     var goal_list = getMasterList();
     var goal;
 
-    for(var i = 0 ; i < goal_list.length ; i++){
-        if(goalName === goal_list[i].name){
+    for (var i = 0; i < goal_list.length; i++) {
+        if (goalName === goal_list[i].name) {
             goal = goal_list[i];
         }
     }
@@ -265,7 +264,7 @@ function disableGoalEdit(goalName){
     goal.deadline = document.querySelector(listItemBase + " .goal-manager-deadline input").value;
 
     editWidget.src = "../images/edit.svg";
-    editWidget.setAttribute("onclick","enableGoalEdit(\"" + goalName + "\")");
+    editWidget.setAttribute("onclick", "enableGoalEdit(\"" + goalName + "\")");
 
     updateMasterList(goal);
 }
@@ -275,13 +274,13 @@ function disableGoalEdit(goalName){
  * goal list.
  * @param goalToDelete: Name of the goal to be deleted from the maste list
  */
-function deleteGoal(goalToDelete){
+function deleteGoal(goalToDelete) {
 
     var goal_list = getMasterList();
 
-    for(var i = goal_list.length - 1; i >= 0; i--) {
-        if(goal_list[i].name === goalToDelete) {
-           goal_list.splice(i, 1);
+    for (var i = goal_list.length - 1; i >= 0; i--) {
+        if (goal_list[i].name === goalToDelete) {
+            goal_list.splice(i, 1);
         }
     }
 
@@ -294,13 +293,13 @@ function deleteGoal(goalToDelete){
  * goal list. Doesn't refresh page.
  * @param goalToDelete: Name of the goal to be deleted from the maste list
  */
-function deleteGoalNoReload(goalToDelete){
+function deleteGoalNoReload(goalToDelete) {
 
     var goal_list = getMasterList();
 
-    for(var i = goal_list.length - 1; i >= 0; i--) {
-        if(goal_list[i].name === goalToDelete) {
-           goal_list.splice(i, 1);
+    for (var i = goal_list.length - 1; i >= 0; i--) {
+        if (goal_list[i].name === goalToDelete) {
+            goal_list.splice(i, 1);
         }
     }
 
@@ -312,9 +311,9 @@ function deleteGoalNoReload(goalToDelete){
  * and updating the master list. Takes a new goal to be added
  * to local storage.
  */
-function updateMasterList(newGoal){
+function updateMasterList(newGoal) {
 
-    if(JSON.parse(window.localStorage.getItem('master_list')) == null){
+    if (JSON.parse(window.localStorage.getItem('master_list')) == null) {
         var goal_list = [newGoal];
         localStorage.setItem("master_list", JSON.stringify(goal_list));
     } else {
@@ -324,6 +323,6 @@ function updateMasterList(newGoal){
     }
 }
 
-function getMasterList(){
+function getMasterList() {
     return JSON.parse(window.localStorage.getItem('master_list'));
 }

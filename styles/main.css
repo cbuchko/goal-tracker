@@ -1,5 +1,5 @@
 body {
-    background:rgba(194, 182, 145, 0.671);
+    background: rgba(194, 182, 145, 0.671);
     color: white;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     margin: 0px;
@@ -24,7 +24,7 @@ nav li {
     border-radius: 5px;
 }
 
-nav li:hover{
+nav li:hover {
     background: rgb(65, 64, 64);
 }
 
@@ -48,7 +48,7 @@ header h1 {
     text-align: center;
 }
 
-header h1 span{
+header h1 span {
     background-color: black;
     color: rgb(29, 98, 138);
     margin: 5px;
@@ -67,6 +67,7 @@ header img {
     max-width: 300px;
     border-radius: 200px;
 }
+
 div.main-container {
     display: flex;
     flex-direction: row;
@@ -88,8 +89,8 @@ div.main-container {
     color: gray;
     flex-direction: column;
     border-style: solid;
-    border-color:rgb(65, 63, 63);
-    max-height: 400px;    
+    border-color: rgb(65, 63, 63);
+    max-height: 400px;
 }
 
 .feature-box.checklist h3 {
@@ -103,7 +104,7 @@ div.main-container {
     margin: 0px;
     padding: 0px;
     height: 340px;
-    list-style-type: none;   
+    list-style-type: none;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -111,7 +112,7 @@ div.main-container {
 .feature-box.checklist li {
     display: flex;
     margin-right: 20px;
-    background:rgb(65, 63, 63);
+    background: rgb(65, 63, 63);
     padding: 0px 10px;
     margin: 5px 0px 0px 0px;
     height: auto;
@@ -166,8 +167,8 @@ div.main-container {
 
 /* BUTTON STYLING */
 
-.button-container button{
-    background-color:rgb(1, 91, 151);
+.button-container button {
+    background-color: rgb(1, 91, 151);
     border: none;
     border-radius: 6px;
     color: white;
@@ -195,7 +196,7 @@ div.main-container {
     transition: 0.5s;
 }
 
-.button-container button:hover span:after{
+.button-container button:hover span:after {
     opacity: 1;
     right: 0;
     cursor: pointer;

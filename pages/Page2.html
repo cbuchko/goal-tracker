@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Connor's Project</title>
-        <link href="../styles/main.css" rel="stylesheet" type="text/css" />
-        <link href="../styles/page2styles.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="../js/script.js"></script>
-    </head> 
-    <body onload="loadGoalManager()">
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li>MANAGE GOALS</li>
-                    <li><a href="Page3.html">page 3</a></li>
-                </ul>
-            </nav>
-            <h1><span><strong>Manage Goals</strong></span></h1>
-            <img src="../images/shia.jpg" alt="justdoit"></img>
-            
-        </header>
-        <div class="main-container">
-            <div id="goal-manager-container">
-                <section class="goal-manager-headings">
-                    <div>Name</div> 
-                    <div>Description</div> 
-                    <div>Date</div>
-                </section>
-                <ul id="goal-manager-unordered-list">
-                    <li id="goal-manager-my-goal">
-                        <button class = "accordion">
-                            <div class = "accordion-header">
-                                <div class="goal-manager-name"><input id="goal-manager-my-goal" type="text"  value="My Goal" disabled="true"></input></div>
-                                <div class="goal-manager-description"><input id="goal-manager-my-description" value="My description" disabled="true"></input></div>
-                                <div class="goal-manager-deadline"><input  id="goal-manager-my-deadline" type="date" value="1999-07-31" disabled="true"></input></div>
-                                <div class="goal-manager-widgets" style="justify-self: end;">
-                                    <img id="goal-manager-edit-my-goal" src="../images/edit.svg" alt="edit goal" onClick="enableGoalEdit()" role="button"></img>
-                                    <img src="../images/trashcan.svg" alt="trashcan" onClick="deleteGoal()" role="button" ></img>
-                                </div>    
-                            </div>                 
-                        </button>
-                        <div class="dropdown-panel">
-                            <p> hello </p>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Connor's Project</title>
+    <link href="../styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/page2styles.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../js/script.js"></script>
+</head>
+
+<body onload="loadGoalManager()">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li>MANAGE GOALS</li>
+                <li><a href="Page3.html">page 3</a></li>
+            </ul>
+        </nav>
+        <h1><span><strong>Manage Goals</strong></span></h1>
+        <img src="../images/shia.jpg" alt="justdoit"></img>
+
+    </header>
+    <div class="main-container">
+        <div id="goal-manager-container">
+            <section class="goal-manager-headings">
+                <div>Name</div>
+                <div>Description</div>
+                <div>Date</div>
+            </section>
+            <ul id="goal-manager-unordered-list">
+                <li id="goal-manager-my-goal">
+                    <button class="accordion">
+                        <div class="accordion-header">
+                            <div class="goal-manager-name"><input id="goal-manager-my-goal" type="text" value="My Goal"
+                                    disabled="true"></input></div>
+                            <div class="goal-manager-description"><input id="goal-manager-my-description"
+                                    value="My description" disabled="true"></input></div>
+                            <div class="goal-manager-deadline"><input id="goal-manager-my-deadline" type="date"
+                                    value="1999-07-31" disabled="true"></input></div>
+                            <div class="goal-manager-widgets" style="justify-self: end;">
+                                <img id="goal-manager-edit-my-goal" src="../images/edit.svg" alt="edit goal"
+                                    onClick="enableGoalEdit()" role="button"></img>
+                                <img src="../images/trashcan.svg" alt="trashcan" onClick="deleteGoal()"
+                                    role="button"></img>
+                            </div>
                         </div>
-                    </li>
-                </ul>
-            </div>
+                    </button>
+                    <div class="dropdown-panel">
+                        <p> hello </p>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <footer>
-            footer
-        </footer>
-        
-    </body>
+    </div>
+    <footer>
+        footer
+    </footer>
+
+</body>
+
 </html>
