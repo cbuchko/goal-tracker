@@ -13,7 +13,8 @@
 /* Styling for the accordion drop downs */
 
 .accordion {
-    padding: 0px;
+    display: flex;
+    padding: 18px 0px;
     border: none;
     transition: 0.4s;
     width: 100%;
@@ -21,10 +22,15 @@
     background-color: gray;
 }
 
+.accordion:focus {
+    outline: 0;
+}
+
 .accordion-header {
     display: grid;
-    grid-template-columns: 1fr 1fr 0.8fr 1fr;
-    padding: 10px;
+    grid-template-columns: 1fr 72px;
+    align-items:center;
+    padding: 0px 5px;
     margin: 0px;
 }
 
@@ -37,6 +43,10 @@
 #goal-manager-container ul {
     padding: 0px;
     list-style-type: none;
+}
+
+#goal-manager-container ul {
+    background: gray;
 }
 
 #goal-manager-widgets {
