@@ -1,0 +1,5 @@
+TODO:
+
+Add a chevron to list items to better indicate the drop down
+Add border between drop down and widgets
+Make widgets feel more incorporated in general

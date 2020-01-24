@@ -68,8 +68,8 @@ function buildGoalManager(newGoal) {
 
     var block = document.createElement("div");
 
-    var accordionDiv = document.createElement("div");
-    accordionDiv.className = "accordion-header";
+    var accordionHeader = document.createElement("div");
+    accordionHeader.className = "accordion-header";
 
     var nameSpace = document.createElement("div");
     nameSpace.className = "goal-manager-name";
@@ -79,7 +79,7 @@ function buildGoalManager(newGoal) {
     nameInput.disabled = true;
 
     nameSpace.appendChild(nameInput);
-    accordionDiv.appendChild(nameSpace);
+    accordionButton.appendChild(nameSpace);
 
     var descriptionSpace = document.createElement("div");
     descriptionSpace.className = "goal-manager-description";
@@ -89,7 +89,7 @@ function buildGoalManager(newGoal) {
     descriptionInput.disabled = true;
 
     descriptionSpace.appendChild(descriptionInput);
-    accordionDiv.appendChild(descriptionSpace);
+    accordionButton.appendChild(descriptionSpace);
 
     var deadlineSpace = document.createElement("div");
     deadlineSpace.className = "goal-manager-deadline";
@@ -100,7 +100,7 @@ function buildGoalManager(newGoal) {
     deadlineInput.disabled = true;
 
     deadlineSpace.appendChild(deadlineInput);
-    accordionDiv.appendChild(deadlineSpace);
+    accordionButton.appendChild(deadlineSpace);
 
     var widgetSpace = document.createElement("div");
     widgetSpace.className = "goal-manager-widgets";
@@ -120,23 +120,22 @@ function buildGoalManager(newGoal) {
     trashcan.setAttribute("onclick", "deleteGoal(\"" + newGoal.name + "\")");
 
     widgetSpace.appendChild(trashcan);
-    accordionDiv.appendChild(widgetSpace);
 
-    accordionButton.appendChild(accordionDiv);
-    block.appendChild(accordionButton);
+    accordionHeader.appendChild(accordionButton);
+    accordionHeader.appendChild(widgetSpace);
+    //block.appendChild(accordionButton);
 
     var dropdownPanel = document.createElement("div");
     dropdownPanel.className = "dropdown-panel";
 
     var content = document.createTextNode("hello");
-
     var p = document.createElement("p");
     p.appendChild(content);
 
     dropdownPanel.appendChild(p);
-    block.appendChild(dropdownPanel);
 
-    newListItem.appendChild(block);
+    newListItem.appendChild(accordionHeader);
+    newListItem.appendChild(dropdownPanel)
 
     document.getElementById("goal-manager-unordered-list").appendChild(newListItem);
 }
@@ -227,6 +226,8 @@ function enableGoalEdit(goalName) {
 
     editWidget.src = "../images/checkmark.png";
     editWidget.setAttribute("onclick", "disableGoalEdit(\"" + goalName + "\")");
+
+    document.querySelector(listItemBase + " .accordion").disabled = true;
 }
 
 /**
@@ -247,6 +248,9 @@ function disableGoalEdit(goalName) {
     document.querySelector(listItemBase + " .goal-manager-name input").disabled = true;
     document.querySelector(listItemBase + " .goal-manager-description input").disabled = true;
     document.querySelector(listItemBase + " .goal-manager-deadline input").disabled = true;
+
+    document.querySelector(listItemBase + " .accordion").disabled = false;
+
 
     var goal_list = getMasterList();
     var goal;
