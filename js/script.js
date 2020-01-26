@@ -154,7 +154,7 @@ function makeGoalItem() {
     var descriptionInput = document.getElementById("goal-description").value;
     var deadlineInput = document.getElementById("goal-deadline").value;
 
-    newGoal = new GoalItem(nameInput, descriptionInput, deadlineInput);
+    var newGoal = new GoalItem(nameInput, descriptionInput, deadlineInput);
 
     if (goal_list != null) {
         goal_list.push(newGoal);
@@ -203,10 +203,6 @@ function loadGoalManager() {
                 panel.style.maxHeight = panel.scrollHeight + "px";
             }
         });
-
-        if (i % 2 === 1) {
-            acc[i].style.backgroundColor = "rgb(90,90,90)";
-        }
     }
 }
 

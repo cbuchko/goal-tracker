@@ -19,7 +19,7 @@
     transition: 0.4s;
     width: 100%;
     cursor: pointer;
-    background-color: gray;
+    background-color: transparent;
 }
 
 .accordion:focus {
@@ -34,10 +34,6 @@
     margin: 0px;
 }
 
-.accordion:hover {
-    background-color: rgb(116, 116, 116)
-}
-
 /* Styling for the list items */
 
 #goal-manager-container ul {
@@ -45,9 +41,24 @@
     list-style-type: none;
 }
 
-#goal-manager-container ul {
+#goal-manager-container li {
     background: gray;
 }
+
+
+#goal-manager-container li:hover {
+    background-color: rgb(116, 116, 116);
+    transition: 0.2s;
+}
+
+#goal-manager-container li:nth-child(even){
+    background: rgb(88, 88, 88);
+}
+
+#goal-manager-container li:nth-child(even):hover{
+    background: rgb(78, 78, 78);
+}
+
 
 #goal-manager-widgets {
     display: flex;
