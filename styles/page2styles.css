@@ -34,7 +34,7 @@
     border-color: black; */
     display: grid;
     grid-template-columns: 1fr 72px;
-    align-items:center;
+    align-items: center;
     padding: 0px 0px;
     margin: 0px;
 }
@@ -46,21 +46,21 @@
     list-style-type: none;
 }
 
-#goal-manager-container li .accordion-header{
+#goal-manager-container li .accordion-header {
     background: gray;
 }
 
 
-#goal-manager-container li:hover .accordion-header{
+#goal-manager-container li:hover .accordion-header {
     background-color: rgb(116, 116, 116);
     transition: 0.2s;
 }
 
-#goal-manager-container li:nth-child(even) .accordion-header{
+#goal-manager-container li:nth-child(even) .accordion-header {
     background: rgb(88, 88, 88);
 }
 
-#goal-manager-container li:nth-child(even):hover .accordion-header{
+#goal-manager-container li:nth-child(even):hover .accordion-header {
     background: rgb(78, 78, 78);
 }
 
@@ -102,8 +102,8 @@ input {
 /* Styling for the hidden panels */
 
 .dropdown-panel {
-    border-top:solid;
-    border-bottom:solid;
+    border-top: solid;
+    border-bottom: solid;
     border-color: black;
     background: rgb(165, 165, 165);
     padding: 0 18px;

@@ -6,6 +6,8 @@
     <script type="text/javascript" src="js/script.js"></script>
     <title>Connor's Project</title>
     <link href="styles/main.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 </head>
 
 <body onload="updateChecklist()">
@@ -61,9 +63,13 @@
             <div class="field-input"><button type="button" onClick="makeGoalItem()">Submit</button></input></div>
         </section>
     </div>
+    <div id="like_button_container"></div>
     <footer>
         footer
     </footer>
+
+    
+    <script src="like_button.js"></script>
 </body>
 
 </html>

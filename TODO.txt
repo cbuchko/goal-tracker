@@ -1,5 +1,7 @@
 TODO:
 
+Work more on goal_manager.js for converting to react
+
 Add a chevron to list items to better indicate the drop down
 
 Make colouring between headings and panel better. Probably best 
