@@ -58,87 +58,87 @@ function newCheckListItem(newGoal) {
  * Should only be called by other functions.
  * Takes the goal list and generates the goal manager.
  */
-function buildGoalManager(newGoal) {
+// function buildGoalManager(newGoal) {
 
-    var newListItem = document.createElement("li");
-    newListItem.id = "goal-manager-" + newGoal.name.replace(/\s/g, '-');
+//     var newListItem = document.createElement("li");
+//     newListItem.id = "goal-manager-" + newGoal.name.replace(/\s/g, '-');
 
-    var accordionButton = document.createElement("button");
-    accordionButton.className = "accordion";
+//     var accordionButton = document.createElement("button");
+//     accordionButton.className = "accordion";
 
-    var block = document.createElement("div");
+//     var block = document.createElement("div");
 
-    var accordionHeader = document.createElement("div");
-    accordionHeader.className = "accordion-header";
+//     var accordionHeader = document.createElement("div");
+//     accordionHeader.className = "accordion-header";
 
-    var nameSpace = document.createElement("div");
-    nameSpace.className = "goal-manager-name";
+//     var nameSpace = document.createElement("div");
+//     nameSpace.className = "goal-manager-name";
 
-    var nameInput = document.createElement("input");
-    nameInput.value = newGoal.name;
-    nameInput.disabled = true;
+//     var nameInput = document.createElement("input");
+//     nameInput.value = newGoal.name;
+//     nameInput.disabled = true;
 
-    nameSpace.appendChild(nameInput);
-    accordionButton.appendChild(nameSpace);
+//     nameSpace.appendChild(nameInput);
+//     accordionButton.appendChild(nameSpace);
 
-    var descriptionSpace = document.createElement("div");
-    descriptionSpace.className = "goal-manager-description";
+//     var descriptionSpace = document.createElement("div");
+//     descriptionSpace.className = "goal-manager-description";
 
-    var descriptionInput = document.createElement("input");
-    descriptionInput.value = newGoal.description;
-    descriptionInput.disabled = true;
+//     var descriptionInput = document.createElement("input");
+//     descriptionInput.value = newGoal.description;
+//     descriptionInput.disabled = true;
 
-    descriptionSpace.appendChild(descriptionInput);
-    accordionButton.appendChild(descriptionSpace);
+//     descriptionSpace.appendChild(descriptionInput);
+//     accordionButton.appendChild(descriptionSpace);
 
-    var deadlineSpace = document.createElement("div");
-    deadlineSpace.className = "goal-manager-deadline";
+//     var deadlineSpace = document.createElement("div");
+//     deadlineSpace.className = "goal-manager-deadline";
 
-    var deadlineInput = document.createElement("input");
-    deadlineInput.value = newGoal.deadline;
-    deadlineInput.type = "date";
-    deadlineInput.disabled = true;
+//     var deadlineInput = document.createElement("input");
+//     deadlineInput.value = newGoal.deadline;
+//     deadlineInput.type = "date";
+//     deadlineInput.disabled = true;
 
-    deadlineSpace.appendChild(deadlineInput);
-    accordionButton.appendChild(deadlineSpace);
+//     deadlineSpace.appendChild(deadlineInput);
+//     accordionButton.appendChild(deadlineSpace);
 
-    var widgetSpace = document.createElement("div");
-    widgetSpace.className = "goal-manager-widgets";
-    widgetSpace.style = "justify-self: end;";
+//     var widgetSpace = document.createElement("div");
+//     widgetSpace.className = "goal-manager-widgets";
+//     widgetSpace.style = "justify-self: end;";
 
-    var edit = document.createElement("img");
-    edit.className = "edit-widget"
-    edit.src = "../images/edit.svg";
-    edit.alt = "edit";
-    edit.setAttribute("onclick", "enableGoalEdit(\"" + newGoal.name + "\")");
+//     var edit = document.createElement("img");
+//     edit.className = "edit-widget"
+//     edit.src = "../images/edit.svg";
+//     edit.alt = "edit";
+//     edit.setAttribute("onclick", "enableGoalEdit(\"" + newGoal.name + "\")");
 
-    widgetSpace.appendChild(edit);
+//     widgetSpace.appendChild(edit);
 
-    var trashcan = document.createElement("img");
-    trashcan.src = "../images/trashcan.svg";
-    trashcan.alt = "trashcan";
-    trashcan.setAttribute("onclick", "deleteGoal(\"" + newGoal.name + "\")");
+//     var trashcan = document.createElement("img");
+//     trashcan.src = "../images/trashcan.svg";
+//     trashcan.alt = "trashcan";
+//     trashcan.setAttribute("onclick", "deleteGoal(\"" + newGoal.name + "\")");
 
-    widgetSpace.appendChild(trashcan);
+//     widgetSpace.appendChild(trashcan);
 
-    accordionHeader.appendChild(accordionButton);
-    accordionHeader.appendChild(widgetSpace);
-    //block.appendChild(accordionButton);
+//     accordionHeader.appendChild(accordionButton);
+//     accordionHeader.appendChild(widgetSpace);
+//     //block.appendChild(accordionButton);
 
-    var dropdownPanel = document.createElement("div");
-    dropdownPanel.className = "dropdown-panel";
+//     var dropdownPanel = document.createElement("div");
+//     dropdownPanel.className = "dropdown-panel";
 
-    var content = document.createTextNode("hello");
-    var p = document.createElement("p");
-    p.appendChild(content);
+//     var content = document.createTextNode("hello");
+//     var p = document.createElement("p");
+//     p.appendChild(content);
 
-    dropdownPanel.appendChild(p);
+//     dropdownPanel.appendChild(p);
 
-    newListItem.appendChild(accordionHeader);
-    newListItem.appendChild(dropdownPanel)
+//     newListItem.appendChild(accordionHeader);
+//     newListItem.appendChild(dropdownPanel)
 
-    document.getElementById("goal-manager-unordered-list").appendChild(newListItem);
-}
+//     document.getElementById("goal-manager-unordered-list").appendChild(newListItem);
+// }
 
 /**
  * Makes a new goal item from submitted inputs.
@@ -221,9 +221,10 @@ function enableGoalEdit(goalName) {
     document.querySelector(listItemBase + " .goal-manager-deadline input").disabled = false;
 
     editWidget.src = "../images/checkmark.png";
-    editWidget.setAttribute("onclick", "disableGoalEdit(\"" + goalName + "\")");
+    editWidget.setAttribute("onClick", "disableGoalEdit(\"" + goalName + "\")");
 
-    document.querySelector(listItemBase + " .accordion").disabled = true;
+    
+    //document.querySelector(listItemBase + " .accordion").disabled = true;
 }
 
 /**
@@ -241,32 +242,30 @@ function disableGoalEdit(goalName) {
     var listItemBase = "#goal-manager-" + goalLookup;
     var editWidget = document.querySelector(listItemBase + " .edit-widget");
 
+    console.log("hi");
     document.querySelector(listItemBase + " .goal-manager-name input").disabled = true;
     document.querySelector(listItemBase + " .goal-manager-description input").disabled = true;
     document.querySelector(listItemBase + " .goal-manager-deadline input").disabled = true;
+    console.log(document.querySelector(listItemBase + " .goal-manager-deadline input").disabled);
 
-    document.querySelector(listItemBase + " .accordion").disabled = false;
+    var goal = masterListSearch(goalName);
+    goal.disabled = true;
+    //document.querySelector(listItemBase + " .accordion").disabled = false;
 
+    // var goal_list = getMasterList();
+    // var goal = masterListSearch(goalName); 
 
-    var goal_list = getMasterList();
-    var goal;
+    // deleteGoalNoReload(goal.name);
 
-    for (var i = 0; i < goal_list.length; i++) {
-        if (goalName === goal_list[i].name) {
-            goal = goal_list[i];
-        }
-    }
+    // goal.name = document.querySelector(listItemBase + " .goal-manager-name input").value;
+    // goal.description = document.querySelector(listItemBase + " .goal-manager-description input").value;
+    // goal.deadline = document.querySelector(listItemBase + " .goal-manager-deadline input").value;
 
-    deleteGoalNoReload(goal.name);
+    // editWidget.src = "../images/edit.svg";
+    // editWidget.setAttribute("onClick", "enableGoalEdit(\"" + goalName + "\")");
 
-    goal.name = document.querySelector(listItemBase + " .goal-manager-name input").value;
-    goal.description = document.querySelector(listItemBase + " .goal-manager-description input").value;
-    goal.deadline = document.querySelector(listItemBase + " .goal-manager-deadline input").value;
-
-    editWidget.src = "../images/edit.svg";
-    editWidget.setAttribute("onclick", "enableGoalEdit(\"" + goalName + "\")");
-
-    updateMasterList(goal);
+    // console.log(goal);
+    // updateMasterList(goal);
 }
 
 /** 
@@ -325,4 +324,14 @@ function updateMasterList(newGoal) {
 
 function getMasterList() {
     return JSON.parse(window.localStorage.getItem('master_list'));
+}
+
+function masterListSearch(goalName) {
+    var goal_list = getMasterList();
+
+    for(var i = 0; i < goal_list.length ; i++){
+        if(goal_list[i].name == goalName){
+            return goal_list[i];
+        }
+    }
 }

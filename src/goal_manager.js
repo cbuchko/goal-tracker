@@ -8,19 +8,19 @@ class GoalManager extends React.Component {
   // Function to create goal list element
   buildGoalManager(goal) {
     return (
-      <li id={`goal-manager-${goal.name}`} key={goal.name}>
+      <li id={`goal-manager-${goal.name.replace(/\s/g, '-')}`} key={goal.name}>
         <div className="accordion-header">
           <button className="accordion">
             <div className="goal-manager-name">
-              <input disabled="" defaultValue={goal.name}></input>
+              <input disabled={true} defaultValue={goal.name}></input>
             </div>
             <div className="goal-manager-description">
-              <input disabled="" defaultValue={goal.description}></input>
+              <input disabled={true} defaultValue={goal.description}></input>
             </div>
             <div className="goal-manager-deadline">
               <input
                 type="date"
-                disabled=""
+                disabled={true}
                 defaultValue={goal.deadline}
               ></input>
             </div>
@@ -30,12 +30,12 @@ class GoalManager extends React.Component {
               className="edit-widget"
               src="../images/edit.svg"
               alt="edit"
-              // onClick={`enableGoalEdit("${goal.name}")`}
+              onClick={() => enableGoalEdit(goal.name)}
             ></img>
             <img
               src="../images/trashcan.svg"
               alt="trashcan"
-              // onClick={`'deleteGoal("${goal.name}")'`}
+              onClick={() => deleteGoal(goal.name)}
             ></img>
           </div>
         </div>
