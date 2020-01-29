@@ -3,6 +3,53 @@
 class GoalManager extends React.Component {
   constructor() {
     super();
+    this.state = {
+      goals: JSON.parse(window.localStorage.getItem("master_list"))
+    };
+  }
+
+  /**
+   * Enable the input fields for the specific
+   * goal so that they are editable.
+   */
+  enableGoalEdit(goalName) {
+    console.log("You would like to edit: ", goalName);
+
+    // var goalLookup = goalName.replace(/\s/g, "-");
+    // var listItemBase = "#goal-manager-" + goalLookup;
+    // var editWidget = document.querySelector(listItemBase + " .edit-widget");
+
+    // document.querySelector(
+    //   listItemBase + " .goal-manager-name input"
+    // ).disabled = false;
+    // document.querySelector(
+    //   listItemBase + " .goal-manager-description input"
+    // ).disabled = false;
+    // document.querySelector(
+    //   listItemBase + " .goal-manager-deadline input"
+    // ).disabled = false;
+
+    // editWidget.src = "../images/checkmark.png";
+    // editWidget.setAttribute("onclick", 'disableGoalEdit("' + goalName + '")');
+
+    // document.querySelector(listItemBase + " .accordion").disabled = true;
+  }
+
+  /**
+   * Remove a goal permanently from the master
+   * goal list.
+   * @param goalToDelete: Name of the goal to be deleted from the maste list
+   */
+  deleteGoal(goalToDelete) {
+    console.log("You would like to delete: ", goalToDelete.name);
+    // var goal_list = getMasterList();
+    // for (var i = goal_list.length - 1; i >= 0; i--) {
+    //   if (goal_list[i].name === goalToDelete) {
+    //     goal_list.splice(i, 1);
+    //   }
+    // }
+    // localStorage.setItem("master_list", JSON.stringify(goal_list));
+    // document.location.reload();
   }
 
   // Function to create goal list element
@@ -12,16 +59,16 @@ class GoalManager extends React.Component {
         <div className="accordion-header">
           <button className="accordion">
             <div className="goal-manager-name">
-              <input disabled="" defaultValue={goal.name}></input>
+              <input disabled="disabled" value={goal.name}></input>
             </div>
             <div className="goal-manager-description">
-              <input disabled="" defaultValue={goal.description}></input>
+              <input disabled="disabled" value={goal.description}></input>
             </div>
             <div className="goal-manager-deadline">
               <input
                 type="date"
-                disabled=""
-                defaultValue={goal.deadline}
+                disabled="disabled"
+                value={goal.deadline}
               ></input>
             </div>
           </button>
@@ -30,12 +77,12 @@ class GoalManager extends React.Component {
               className="edit-widget"
               src="../images/edit.svg"
               alt="edit"
-              // onClick={`enableGoalEdit("${goal.name}")`}
+              onClick={this.enableGoalEdit(goal)}
             ></img>
             <img
               src="../images/trashcan.svg"
               alt="trashcan"
-              // onClick={`'deleteGoal("${goal.name}")'`}
+              onClick={this.deleteGoal(goal.name)}
             ></img>
           </div>
         </div>
@@ -49,7 +96,7 @@ class GoalManager extends React.Component {
   render() {
     return (
       <div>
-        {JSON.parse(window.localStorage.getItem("master_list")).map(goal => {
+        {this.state.goals.map(goal => {
           return this.buildGoalManager(goal);
         })}
       </div>
