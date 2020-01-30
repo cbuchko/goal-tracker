@@ -41,15 +41,14 @@ class GoalManager extends React.Component {
    * @param goalToDelete: Name of the goal to be deleted from the maste list
    */
   deleteGoal(goalToDelete) {
-    console.log("You would like to delete: ", goalToDelete.name);
-    // var goal_list = getMasterList();
-    // for (var i = goal_list.length - 1; i >= 0; i--) {
-    //   if (goal_list[i].name === goalToDelete) {
-    //     goal_list.splice(i, 1);
-    //   }
-    // }
-    // localStorage.setItem("master_list", JSON.stringify(goal_list));
-    // document.location.reload();
+    var goal_list = this.state.goals;
+    for (var i = goal_list.length - 1; i >= 0; i--) {
+      if (goal_list[i].name === goalToDelete) {
+        goal_list.splice(i, 1);
+      }
+    }
+    localStorage.setItem("master_list", JSON.stringify(goal_list));
+    document.location.reload();
   }
 
   // Function to create goal list element
