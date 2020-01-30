@@ -77,12 +77,12 @@ class GoalManager extends React.Component {
               className="edit-widget"
               src="../images/edit.svg"
               alt="edit"
-              onClick={() => enableGoalEdit(goal.name)}
+              onClick={() => this.enableGoalEdit(goal.name)}
             ></img>
             <img
               src="../images/trashcan.svg"
               alt="trashcan"
-              onClick={() => deleteGoal(goal.name)}
+              onClick={() => this.deleteGoal(goal.name)}
             ></img>
           </div>
         </div>
