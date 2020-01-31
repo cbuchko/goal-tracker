@@ -4,7 +4,9 @@
   "description": "",
   "main": "goal_manager.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --config webpack.config.js --mode development --watch",
+    "build": "webpack --config webpack.config.js --mode production"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,18 @@
   },
   "homepage": "https://github.com/cbuchko/goal-tracker#readme",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.2"
+    "babel-cli": "^7.0.0-0",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.2"
   }
 }

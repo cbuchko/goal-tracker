@@ -1,6 +1,73 @@
-"use strict";
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
-class GoalManager extends React.Component {
+class GoalListItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isEditing: false
+    };
+  }
+
+  // Function to create goal list element
+  buildGoalManager(goal) {
+    return (
+      <div className="accordion-header">
+        <button className="accordion">
+          <div className="goal-manager-name">
+            <input
+              disabled={!this.state.isEditing}
+              defaultValue={goal.name}
+            ></input>
+          </div>
+          <div className="goal-manager-description">
+            <input
+              disabled={!this.state.isEditing}
+              defaultValue={goal.description}
+            ></input>
+          </div>
+          <div className="goal-manager-deadline">
+            <input
+              type="date"
+              disabled={!this.state.isEditing}
+              defaultValue={goal.deadline}
+            ></input>
+          </div>
+        </button>
+        <div className="goal-manager-widgets" style={{ justifySelf: "end" }}>
+          <img
+            className="edit-widget"
+            src="../images/edit.svg"
+            alt="edit"
+            onClick={() =>
+              this.setState(state => {
+                return { isEditing: !state.isEditing };
+              })
+            }
+          ></img>
+          <img
+            src="../images/trashcan.svg"
+            alt="trashcan"
+            onClick={() => this.deleteGoal(goal.name)}
+          ></img>
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <li
+        id={`goal-manager-${this.props.goal.name.replace(/\s/g, "-")}`}
+        key={this.props.goal.name}
+      >
+        {this.buildGoalManager(this.props.goal)}
+      </li>
+    );
+  }
+}
+
+class GoalManager extends Component {
   constructor() {
     super();
     this.state = {
@@ -51,52 +118,11 @@ class GoalManager extends React.Component {
     document.location.reload();
   }
 
-  // Function to create goal list element
-  buildGoalManager(goal) {
-    return (
-      <li id={`goal-manager-${goal.name.replace(/\s/g, "-")}`} key={goal.name}>
-        <div className="accordion-header">
-          <button className="accordion">
-            <div className="goal-manager-name">
-              <input disabled={true} defaultValue={goal.name}></input>
-            </div>
-            <div className="goal-manager-description">
-              <input disabled={true} defaultValue={goal.description}></input>
-            </div>
-            <div className="goal-manager-deadline">
-              <input
-                type="date"
-                disabled={true}
-                defaultValue={goal.deadline}
-              ></input>
-            </div>
-          </button>
-          <div className="goal-manager-widgets" style={{ justifySelf: "end" }}>
-            <img
-              className="edit-widget"
-              src="../images/edit.svg"
-              alt="edit"
-              onClick={() => this.enableGoalEdit(goal.name)}
-            ></img>
-            <img
-              src="../images/trashcan.svg"
-              alt="trashcan"
-              onClick={() => this.deleteGoal(goal.name)}
-            ></img>
-          </div>
-        </div>
-        <div className="dropdown-panel">
-          <p>hello</p>
-        </div>
-      </li>
-    );
-  }
-
   render() {
     return (
       <div>
-        {this.state.goals.map(goal => {
-          return this.buildGoalManager(goal);
+        {this.state.goals.map((goal, index) => {
+          return <GoalListItem goal={goal} key={index} />;
         })}
       </div>
     );
