@@ -37,7 +37,7 @@ class GoalListItem extends Component {
         <div className="goal-manager-widgets" style={{ justifySelf: "end" }}>
           <img
             className="edit-widget"
-            src="../images/edit.svg"
+            src= {this.state.isEditing ? "../images/checkmark.png" : "../images/edit.svg"}
             alt="edit"
             onClick={() =>
               this.setState(state => {
