@@ -1,6 +1,29 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import {GoalItem, updateMasterList} from "./script.js";
+
+/** 
+ * These next two functions are temporarily 
+ * relocated here until other work gets been done.
+ */
+class GoalItem {
+  constructor(goal_name, goal_description, goal_deadline) {
+      this.name = goal_name
+      this.description = goal_description;
+      this.deadline = goal_deadline;
+  }
+}
+
+function updateMasterList(newGoal) {
+
+  if (JSON.parse(window.localStorage.getItem('master_list')) == null) {
+      var goal_list = [newGoal];
+      localStorage.setItem("master_list", JSON.stringify(goal_list));
+  } else {
+      var goal_list = JSON.parse(window.localStorage.getItem('master_list'));
+      goal_list.push(newGoal);
+      localStorage.setItem("master_list", JSON.stringify(goal_list));
+  }
+}
 
 class GoalListItem extends Component {
   constructor(props) {

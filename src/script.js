@@ -1,4 +1,4 @@
-export class GoalItem {
+class GoalItem {
     constructor(goal_name, goal_description, goal_deadline) {
         this.name = goal_name
         this.description = goal_description;
@@ -69,12 +69,7 @@ function makeGoalItem() {
     var deadlineInput = document.getElementById("goal-deadline").value;
 
     var newGoal = new GoalItem(nameInput, descriptionInput, deadlineInput);
-
-    if (goal_list != null) {
-        goal_list.push(newGoal);
-    } else {
-        var goal_list = [newGoal];
-    }
+    
     //make the new goal item appear in the checklist
     newCheckListItem(newGoal);
 
@@ -125,15 +120,14 @@ function loadGoalManager() {
  * and updating the master list. Takes a new goal to be added
  * to local storage.
  */
-export function updateMasterList(newGoal) {
+function updateMasterList(newGoal) {
 
     if (JSON.parse(window.localStorage.getItem('master_list')) == null) {
         var goal_list = [newGoal];
         localStorage.setItem("master_list", JSON.stringify(goal_list));
     } else {
         var goal_list = JSON.parse(window.localStorage.getItem('master_list'));
-        if(goal_list.includes(newGoal) )
-            goal_list.push(newGoal);
+        goal_list.push(newGoal);
         localStorage.setItem("master_list", JSON.stringify(goal_list));
     }
 }
