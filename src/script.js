@@ -1,4 +1,4 @@
-class GoalItem {
+export class GoalItem {
     constructor(goal_name, goal_description, goal_deadline) {
         this.name = goal_name
         this.description = goal_description;
@@ -117,6 +117,24 @@ function loadGoalManager() {
                 panel.style.maxHeight = panel.scrollHeight + "px";
             }
         });
+    }
+}
+
+/**
+ * Functions for easily working with local storage
+ * and updating the master list. Takes a new goal to be added
+ * to local storage.
+ */
+export function updateMasterList(newGoal) {
+
+    if (JSON.parse(window.localStorage.getItem('master_list')) == null) {
+        var goal_list = [newGoal];
+        localStorage.setItem("master_list", JSON.stringify(goal_list));
+    } else {
+        var goal_list = JSON.parse(window.localStorage.getItem('master_list'));
+        if(goal_list.includes(newGoal) )
+            goal_list.push(newGoal);
+        localStorage.setItem("master_list", JSON.stringify(goal_list));
     }
 }
 
