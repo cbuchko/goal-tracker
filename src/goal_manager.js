@@ -97,52 +97,57 @@ class GoalListItem extends Component {
     this.state.deadline = goal.deadline;
 
     return (
-      <div className="accordion-header">
-        <button className="accordion">
-          <div className="goal-manager-name">
-            <input
-              name="title"
-              disabled={!this.state.isEditing}
-              defaultValue={goal.name}
-              onChange={this.updateGoal}
-            ></input>
+      <div>
+        <div className="accordion-header">
+          <button className="accordion">
+            <div className="goal-manager-name">
+              <input
+                name="title"
+                disabled={!this.state.isEditing}
+                defaultValue={goal.name}
+                onChange={this.updateGoal}
+              ></input>
+            </div>
+            <div className="goal-manager-description">
+              <input
+                name="description"
+                disabled={!this.state.isEditing}
+                defaultValue={goal.description}
+                onChange={this.updateGoal}
+              ></input>
+            </div>
+            <div className="goal-manager-deadline">
+              <input
+                name="deadline"
+                type="date"
+                disabled={!this.state.isEditing}
+                defaultValue={goal.deadline}
+                onChange={this.updateGoal}
+              ></input>
+            </div>
+          </button>
+          <div className="goal-manager-widgets" style={{ justifySelf: "end" }}>
+            <img
+              className="edit-widget"
+              src= {this.state.isEditing ? "../images/checkmark.png" : "../images/edit.svg"}
+              alt="edit"
+              onClick={() => {
+                this.confirmUpdateGoal();
+                this.setState(state => {               
+                  return { isEditing: !state.isEditing };
+                })   
+              }      
+              }
+            ></img>
+            <img
+              src="../images/trashcan.svg"
+              alt="trashcan"
+              onClick={() => this.deleteGoal(goal.name)}
+            ></img>
           </div>
-          <div className="goal-manager-description">
-            <input
-              name="description"
-              disabled={!this.state.isEditing}
-              defaultValue={goal.description}
-              onChange={this.updateGoal}
-            ></input>
-          </div>
-          <div className="goal-manager-deadline">
-            <input
-              name="deadline"
-              type="date"
-              disabled={!this.state.isEditing}
-              defaultValue={goal.deadline}
-              onChange={this.updateGoal}
-            ></input>
-          </div>
-        </button>
-        <div className="goal-manager-widgets" style={{ justifySelf: "end" }}>
-          <img
-            className="edit-widget"
-            src= {this.state.isEditing ? "../images/checkmark.png" : "../images/edit.svg"}
-            alt="edit"
-            onClick={() => {
-              this.confirmUpdateGoal();
-              this.setState(state => {               
-                return { isEditing: !state.isEditing };
-              })   
-            }      
-            }
-          ></img>
-          <img
-            src="../images/trashcan.svg"
-            alt="trashcan"
-            onClick={() => this.deleteGoal(goal.name)}
-          ></img>
+        </div> 
+        <div className="dropdown-panel">
+          <p> hello </p>
         </div>
       </div>
     );
@@ -159,6 +164,8 @@ class GoalListItem extends Component {
     );
   }
 }
+
+
 
 class GoalManager extends Component {
   constructor() {
@@ -181,3 +188,18 @@ class GoalManager extends Component {
 
 let domContainer = document.querySelector("#goal-manager-unordered-list");
 ReactDOM.render(<GoalManager />, domContainer);
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var panel = this.parentNode.nextElementSibling;
+      if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+      } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+  });
+}
