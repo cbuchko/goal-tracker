@@ -25,6 +25,10 @@ function updateMasterList(newGoal) {
   }
 }
 
+/**
+ * React component for creating indivudal list items
+ * for the goal manager
+ */
 class GoalListItem extends Component {
   constructor(props) {
     super(props);
@@ -166,7 +170,9 @@ class GoalListItem extends Component {
 }
 
 
-
+/**
+ * React object for making the entire goal manager
+ */
 class GoalManager extends Component {
   constructor() {
     super();
@@ -186,12 +192,18 @@ class GoalManager extends Component {
   }
 }
 
-let domContainer = document.querySelector("#goal-manager-unordered-list");
-ReactDOM.render(<GoalManager />, domContainer);
+if(document.querySelector("#goal-manager-unordered-list") != null){
+  let domContainer = document.querySelector("#goal-manager-unordered-list");
+  ReactDOM.render(<GoalManager />, domContainer);
+}
 
 var acc = document.getElementsByClassName("accordion");
 var i;
 
+/** 
+ * Add the dropdown panel functioanlity to the
+ * list items.
+ */
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function () {
       this.classList.toggle("active");
@@ -203,3 +215,61 @@ for (i = 0; i < acc.length; i++) {
       }
   });
 }
+
+function makeGoalItem() {
+  if (document.getElementById("goal-name").value === "") {
+      alert("Name needed!");
+      return;
+  }
+
+  var nameInput = document.getElementById("goal-name").value;
+  var descriptionInput = document.getElementById("goal-description").value;
+  var deadlineInput = document.getElementById("goal-deadline").value;
+
+  var newGoal = new GoalItem(nameInput, descriptionInput, deadlineInput);
+  
+  //make the new goal item appear in the checklist
+  //newCheckListItem(newGoal);
+
+  //store goals into local storage
+  updateMasterList(newGoal);
+  let domContainer = document.querySelector("#unordered-checklist");
+  console.log("DFSDJKFNA");
+  ReactDOM.render(<Checklist />, domContainer);
+}
+
+class Checklist extends Component {
+  constructor(){
+    super();
+    this.state = {
+      goals: JSON.parse(window.localStorage.getItem("master_list"))
+    }
+  }
+
+  render(){
+    return (
+      <div>
+        {this.state.goals.map((goal) => {
+          return (
+            <li>
+              <input type="checkbox" className="checkbox" name="goal"></input>
+              <div className="unordered-checklist-goal-content">
+                <p className="unordered-checklist-title">{goal.name}</p>
+                <div className="unordered-checklist-goal-info">
+                    <span className="unordered-checklist-description">{goal.description}</span>
+                    <span className="unordered-checklist-deadline">{goal.deadline}</span>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+    </div>
+    );
+  }
+}
+
+if(document.querySelector("#unordered-checklist") != null){
+  let domContainer = document.querySelector("#unordered-checklist");
+  ReactDOM.render(<Checklist />, domContainer);
+}
+

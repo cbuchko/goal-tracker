@@ -6,53 +6,7 @@ class GoalItem {
     }
 }
 
-/** 
- * Should only be called by other functions
- * Takes a goal and adds the styling in the checklist
- */
-function newCheckListItem(newGoal) {
 
-    var li = document.createElement("li");
-    var input = document.createElement("input");
-    var nameSpace = document.createElement("p");
-    var goal_content = document.createElement("div");
-    var goal_info = document.createElement("div");
-    var description = document.createElement("span");
-    var deadline = document.createElement("span");
-
-    input.type = "checkbox";
-    input.name = "goal";
-    input.className = "checkbox";
-    nameSpace.className = "unordered-checklist-title";
-    description.className = "unordered-checklist-description";
-    goal_content.className = "unordered-checklist-goal-content";
-    goal_info.className = "unordered-checklist-goal-info";
-    deadline.className = "unordered-checklist-deadline";
-
-    var t = document.createTextNode(" " + newGoal.name);
-    var d = document.createTextNode(newGoal.description);
-    var de = document.createTextNode(newGoal.deadline);
-
-    nameSpace.appendChild(t);
-    description.appendChild(d);
-    deadline.appendChild(de);
-
-    li.appendChild(input);
-
-    goal_content.appendChild(nameSpace);
-    goal_info.appendChild(description);
-    goal_info.appendChild(deadline);
-    goal_content.appendChild(goal_info)
-    li.appendChild(goal_content);
-
-
-    document.getElementById("unordered-checklist").appendChild(li);
-    document.getElementById("input-form").style.opacity = 0;
-
-    document.getElementById("goal-name").value = "";
-    document.getElementById("goal-description").value = "";
-    document.getElementById("goal-deadline").value = "";
-}
 
 /**
  * Makes a new goal item from submitted inputs.
@@ -71,22 +25,11 @@ function makeGoalItem() {
     var newGoal = new GoalItem(nameInput, descriptionInput, deadlineInput);
     
     //make the new goal item appear in the checklist
-    newCheckListItem(newGoal);
+    //newCheckListItem(newGoal);
 
     //store goals into local storage
     updateMasterList(newGoal);
-}
-
-/** 
- * When the home page is loaded, make sure the checklist
- * contains all of the right goals
- */
-function updateChecklist() {
-    //get goals from local storage
-    var goal_list = JSON.parse(window.localStorage.getItem('master_list'));
-    if (goal_list != null) {
-        goal_list.forEach(newCheckListItem);
-    }
+    location.reload();
 }
 
 function openForm() {

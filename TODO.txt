@@ -1,5 +1,8 @@
 TODO:
 
+Migrate MakeGoalItem function to goal_manager.js so that a checklist update
+can be done without refreshing the page.
+
 Work more on goal_manager.js for converting to react
 
 Add a chevron to list items to better indicate the drop down
