@@ -230,7 +230,6 @@ div.main-container {
     display: flex;
     justify-content: center;
     padding: 10px;
-    opacity: 0;
     transition: 0.5s;
     padding: 5px 0px;
 }

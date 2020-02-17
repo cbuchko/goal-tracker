@@ -1,8 +1,5 @@
 TODO:
 
-Migrate MakeGoalItem function to goal_manager.js so that a checklist update
-can be done without refreshing the page.
-
 Work more on goal_manager.js for converting to react
 
 Add a chevron to list items to better indicate the drop down
@@ -10,3 +7,6 @@ Add a chevron to list items to better indicate the drop down
 Make colouring between headings and panel better. Probably best 
 to make it so that only the header changes on hover and the panel is 
 a lighter colour than the heading.
+
+Migrate MakeGoalItem function to goal_manager.js so that a checklist update
+can be done without refreshing the page.

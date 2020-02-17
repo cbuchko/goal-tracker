@@ -26,7 +26,7 @@ function updateMasterList(newGoal) {
 }
 
 /**
- * React component for creating indivudal list items
+ * React component for creating individual list items
  * for the goal manager
  */
 class GoalListItem extends Component {
@@ -103,7 +103,9 @@ class GoalListItem extends Component {
     return (
       <div>
         <div className="accordion-header">
-          <button className="accordion">
+          <button className="accordion"
+            disabled ={this.state.isEditing}
+          >
             <div className="goal-manager-name">
               <input
                 name="title"
@@ -216,28 +218,6 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-function makeGoalItem() {
-  if (document.getElementById("goal-name").value === "") {
-      alert("Name needed!");
-      return;
-  }
-
-  var nameInput = document.getElementById("goal-name").value;
-  var descriptionInput = document.getElementById("goal-description").value;
-  var deadlineInput = document.getElementById("goal-deadline").value;
-
-  var newGoal = new GoalItem(nameInput, descriptionInput, deadlineInput);
-  
-  //make the new goal item appear in the checklist
-  //newCheckListItem(newGoal);
-
-  //store goals into local storage
-  updateMasterList(newGoal);
-  let domContainer = document.querySelector("#unordered-checklist");
-  console.log("DFSDJKFNA");
-  ReactDOM.render(<Checklist />, domContainer);
-}
-
 class Checklist extends Component {
   constructor(){
     super();
@@ -273,3 +253,94 @@ if(document.querySelector("#unordered-checklist") != null){
   ReactDOM.render(<Checklist />, domContainer);
 }
 
+class InputForm extends Component {
+  constructor(){
+    super();
+    this.makeGoalItem = this.makeGoalItem.bind(this);
+    this.state = {
+      isEnabled: false
+    }
+  }
+
+  makeGoalItem() {
+    if (document.getElementById("goal-name").value === "") {
+        alert("Name needed!");
+        return;
+    }
+
+    var nameInput = document.getElementById("goal-name").value;
+    var descriptionInput = document.getElementById("goal-description").value;
+    var deadlineInput = document.getElementById("goal-deadline").value;
+
+    var newGoal = new GoalItem(nameInput, descriptionInput, deadlineInput);
+
+    //store goals into local storage
+    updateMasterList(newGoal);
+    location.reload();
+}
+
+  render(){
+    if(this.state.isEnabled){
+      return(
+        <section id="input-form">
+          <div className="field-input"> Goal Name:
+            <input 
+              type="text" 
+              id="goal-name" 
+              name="goal-name"
+              autoComplete="off"></input>
+            </div>
+          <div className="field-input">Goal Description:  
+            <input 
+              type="text" 
+              id="goal-description" 
+              name="goal-description"
+              autoComplete="off"></input>
+          </div>
+          <div className="field-input">Goal Deadline: 
+            <input 
+              type="date" 
+              id="goal-deadline" 
+              name="goal-deadline"></input>
+          </div>
+          <div className="field-input">Repeating: 
+            <select>
+              <option value="daily">Daily</option>
+              <option value="bi-daily">Bi-Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="bi-weekly">Bi-Weekly</option>
+            </select>
+          </div>
+          <div className="field-input">
+            <button 
+              type="button" 
+              onClick={() => this.makeGoalItem()}
+              >Submit</button>
+          </div>
+        </section>
+      );
+    }else{
+      return null;
+    }
+  }
+}
+
+let inputForm;
+if(document.querySelector(".wrapper") != null){
+  let domContainer = document.querySelector(".wrapper");
+  inputForm = ReactDOM.render(<InputForm />, domContainer);
+}
+
+if(document.querySelector("#button-slot") != null){
+  let domContainer = document.querySelector("#button-slot");
+  ReactDOM.render(
+    <button onClick={() => {
+      inputForm.setState(() => {
+        return { isEnabled : true };
+      })
+    }}>
+      <span>Add a goal!</span>
+    </button>,
+    domContainer
+  );
+}
